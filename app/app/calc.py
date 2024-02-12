@@ -6,4 +6,4 @@ def add_numbers(x, y):
 
 def subtract_numbers(x, y):
     """Subtract x from y and return value"""
-    return y - x
+    return x - y
