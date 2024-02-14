@@ -1,15 +1,16 @@
 version: "3.9"
 
 services:
-  app: 
-    build: 
+  app:
+    build:
       context: .
-      args: 
+      args:
         - DEV=true
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app
+      - dev-static-data:/vol/web
     command: >
       sh -c "python manage.py wait_for_db &&
             python manage.py migrate &&
@@ -21,15 +22,16 @@ services:
       - DB_PASSWORD=changeme
     depends_on:
       - db
-  
-  db: 
+
+  db:
     image: postgres:13-alpine
-    volumes: 
+    volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=devdb  
+      - POSTGRES_DB=devdb
       - POSTGRES_USER=devuser
       - POSTGRES_PASSWORD=changeme
 
 volumes:
   dev-db-data:
+  dev-static-data:
