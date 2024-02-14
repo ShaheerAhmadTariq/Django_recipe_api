@@ -3,7 +3,6 @@ Views for recipes API
 """
 from rest_framework import (
     viewsets,
-    mixins,
     status
     )
 from rest_framework.decorators import action

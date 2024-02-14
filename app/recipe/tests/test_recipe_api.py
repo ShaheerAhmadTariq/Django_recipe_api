@@ -106,7 +106,7 @@ class PrivateRecipeApiTests(TestCase):
             'link': 'https://www.sample.com',
             'description': 'Sample description'
         }
-        res = self.client.post(RECIPES_URL, payload)  #/api/recipies/recipes/
+        res = self.client.post(RECIPES_URL, payload)  # /api/recipies/recipes/
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         recipe = Recipe.objects.get(id=res.data['id'])
         for k, v in payload.items():
